@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS driver CASCADE;
 
 CREATE TABLE driver(
 	id SERIAL NOT NULL PRIMARY KEY, 
+	name TEXT NOT NULL, 
 	phone_number CHAR(11) UNIQUE NOT NULL, 
     password TEXT NOT NULL,
     email CHAR(50) NOT NULL,

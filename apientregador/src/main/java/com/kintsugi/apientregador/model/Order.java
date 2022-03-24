@@ -1,5 +1,7 @@
 package com.kintsugi.apientregador.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="orders")
-public class Orders {
+public class Order {
 
 	@Id
 	@Column(name="id")
@@ -26,6 +29,9 @@ public class Orders {
 	@Column(name="timestamp", nullable = false)
 	private String timestamp;
 	
+	@Column(name="status", nullable = false)
+	private String status;
+	
 	@ManyToOne
 	@JoinColumn(name="client_id")
 	@JsonIgnoreProperties("ordersList")
@@ -35,6 +41,10 @@ public class Orders {
 	@JoinColumn(name="driver_id")
 	@JsonIgnoreProperties("ordersList")
 	private Driver driver;
+	
+	@OneToMany(mappedBy="order")
+	@JsonIgnoreProperties("order")
+	private List<Tracking> trackingList;
 	
 
 	public Integer getId() {
@@ -66,6 +76,18 @@ public class Orders {
 	}
 	public void setDriver(Driver driver) {
 		this.driver = driver;
-	}	
-	
+	}
+	public List<Tracking> getTrackingList() {
+		return trackingList;
+	}
+	public void setTrackingList(List<Tracking> trackingList) {
+		this.trackingList = trackingList;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}		
+		
 }

@@ -33,20 +33,16 @@ public class Driver {
 	@Column(name="password", nullable = false)
 	private String password;
 	
-	@Column(name="latitude", nullable = false)
+	@Column(name="latitude")
 	private Double latitude;
 	
-	@Column(name="longitute", nullable = false)
+	@Column(name="longitute")
 	private Double longitude;
 	
 	@OneToMany(mappedBy="driver")
 	@JsonIgnoreProperties("driver")
-	private List<Orders> ordersList;
+	private List<Order> ordersList;
 	
-	@OneToMany(mappedBy="order")
-	@JsonIgnoreProperties("order")
-	private List<Tracking> trackingList;
-
 	
 	
 	public Integer getId() {
@@ -91,17 +87,11 @@ public class Driver {
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	public List<Orders> getOrdersList() {
+	public List<Order> getOrdersList() {
 		return ordersList;
 	}
-	public void setOrdersList(List<Orders> ordersList) {
+	public void setOrdersList(List<Order> ordersList) {
 		this.ordersList = ordersList;
 	}
-	public List<Tracking> getTrackingList() {
-		return trackingList;
-	}
-	public void setTrackingList(List<Tracking> trackingList) {
-		this.trackingList = trackingList;
-	}	
 	
 }

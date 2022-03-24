@@ -32,7 +32,7 @@ public class Tracking {
 	@ManyToOne
 	@JoinColumn(name="order_id")
 	@JsonIgnoreProperties("trackingList")	
-	private Orders orders;
+	private Order order;
 
 	
 	
@@ -60,11 +60,11 @@ public class Tracking {
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	public Orders getOrders() {
-		return orders;
+	public Order getOrders() {
+		return order;
 	}
-	public void setOrders(Orders orders) {
-		this.orders = orders;
+	public void setOrders(Order orders) {
+		this.order = orders;
 	}	
 	
 }

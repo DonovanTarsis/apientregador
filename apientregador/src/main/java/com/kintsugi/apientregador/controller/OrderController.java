@@ -28,5 +28,10 @@ public class OrderController {
 		lista = (List<Order>) dao.findAllByIdDriverAndStatusInTransit(idDriver);
 		return lista;
 	}
-
+	@GetMapping("/order/{id}")
+	public List<Order> recuperarPedidoId(@PathVariable Integer id) {
+		List<Order> lista;
+		lista = (List<Order>) dao.findOrderById(id);
+		return lista;
+	}
 }

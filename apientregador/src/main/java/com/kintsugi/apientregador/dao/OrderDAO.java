@@ -7,8 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.kintsugi.apientregador.model.Order;
 
-public interface OrderDAO extends CrudRepository<Order, Integer>{
-	@Query(value="SELECT * FROM order WHERE status ='EM_ESPERA'" , nativeQuery= true)
+public interface OrderDAO extends CrudRepository<Order, Integer> {
+	@Query(value = "SELECT * FROM order WHERE status ='EM_ESPERA'", nativeQuery = true)
 	public List<Order> findAllWhereStatusEmEspera();
-	
+
+	@Query(value = "select * from orders where driver_id = :driverId and status = 'EM_TRANSITO'", nativeQuery = true)
+	public List<Order> findAllByIdDriverAndStatusInTransit(int driverId);
+
 }

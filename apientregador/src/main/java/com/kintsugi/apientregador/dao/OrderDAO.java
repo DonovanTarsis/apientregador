@@ -11,7 +11,9 @@ public interface OrderDAO extends CrudRepository<Order, Integer> {
 	@Query(value = "SELECT * FROM order WHERE status ='EM_ESPERA'", nativeQuery = true)
 	public List<Order> findAllWhereStatusEmEspera();
 
-	@Query(value = "select * from orders where driver_id = :driverId and status = 'EM_TRANSITO'", nativeQuery = true)
+	@Query(value = "select * from order where driver_id = :driverId and status = 'EM_TRANSITO'", nativeQuery = true)
 	public List<Order> findAllByIdDriverAndStatusInTransit(int driverId);
 
+	@Query(value = "select * from order where id = :id", nativeQuery = true)
+	public List<Order> findOrderById(int id);
 }

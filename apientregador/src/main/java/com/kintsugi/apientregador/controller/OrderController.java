@@ -12,15 +12,21 @@ import com.kintsugi.apientregador.model.Order;
 
 @RestController
 public class OrderController {
-	
+
 	@Autowired
+
 	private OrderDAO dao;
+
+	@GetMapping("/orders")
+	public List<Order> listarPedidos() {
+		return (List<Order>) dao.findAllWhereStatusEmEspera();
+	}
 
 	@GetMapping("/orders/driver/{idDriver}")
 	public List<Order> recuperarPedidoIdDriver(@PathVariable Integer idDriver) {
-		List<Order> lista; 
-		lista = (List<Order>)dao.findAllByIdDriverAndStatusInTransit(idDriver);
+		List<Order> lista;
+		lista = (List<Order>) dao.findAllByIdDriverAndStatusInTransit(idDriver);
 		return lista;
 	}
-	
+
 }

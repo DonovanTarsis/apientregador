@@ -25,7 +25,7 @@ CREATE TABLE orders(
 	id SERIAL NOT NULL PRIMARY KEY, 
 	value INTEGER NOT NULL, 
 	timestamp TEXT NOT NULL,
-    status TEXT NOT NULL,
+    status INTEGER NOT NULL,
     client_id INTEGER NOT NULL,
     driver_id INTEGER,
   	constraint fk_client foreign key (client_id) references client(id),

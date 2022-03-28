@@ -15,8 +15,8 @@ public class OrderController {
 	private OrderService orderService;
 
 	@GetMapping("/orders")
-	public ResponseEntity<?> recuperarPedidoIdDriver(@RequestParam("driver_id") Integer idDriver) {
-		return orderService.recuperarPedidoIdDriver(idDriver);
+	public ResponseEntity<?> listarPedidosEmAberto(@RequestParam("driver_id") Integer idDriver) {
+		return orderService.listarPedidosEmAberto(idDriver);
 	}
 
 }

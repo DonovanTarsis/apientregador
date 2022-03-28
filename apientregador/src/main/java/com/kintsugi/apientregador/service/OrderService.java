@@ -17,7 +17,7 @@ public class OrderService {
     @Autowired
     OrderDAO orderDAO;
 
-    public ResponseEntity<?> recuperarPedidoIdDriver(Integer idDriver) {
+    public ResponseEntity<?> listarPedidosEmAberto(Integer idDriver) {
         try {
             Integer status = OrderStatusEnum.EM_ESPERA.getStatus();
             List<Order> list = orderDAO.listOrdersFiltered(status, idDriver);

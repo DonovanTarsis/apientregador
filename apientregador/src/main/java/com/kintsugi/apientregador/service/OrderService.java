@@ -59,4 +59,17 @@ public class OrderService {
         }
     }
 
+    
+ public ResponseEntity<?> pegarOrderPeloId( Integer id){
+	 try {
+         Order order = orderDAO.findById(id).orElse(null);
+         if(order==null) {
+             return ResponseEntity.status(404).body("pedido não encontrado");
+
+         }
+         return ResponseEntity.status(200).body(order); 
+     } catch (RuntimeException ex) {
+      return ResponseEntity.status(500).body("erro no servidor");
+     }
+ }
 }

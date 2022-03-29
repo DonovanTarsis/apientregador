@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DriverDAO extends JpaRepository<Driver, Integer> {
 
+    public Driver findByEmailEquals(String email);
 }

@@ -15,7 +15,7 @@ CREATE TABLE driver(
 	name TEXT NOT NULL, 
 	phone_number CHAR(11) UNIQUE NOT NULL, 
     password TEXT NOT NULL,
-    email CHAR(50) NOT NULL,
+    email CHAR(50) UNIQUE NOT NULL,
     latitude DECIMAL,
     longitude DECIMAL
 );

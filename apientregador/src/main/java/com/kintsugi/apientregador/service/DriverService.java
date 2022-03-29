@@ -25,8 +25,49 @@ public class DriverService {
             
         } catch (RuntimeException e) {
 
-            return ResponseEntity.status(500).body("erro no servidor");
+            return ResponseEntity.status(500).body("Erro no servidor");
         }
 
+    }
+
+    public ResponseEntity<?> atualizarDriverPeloId(Integer id, Driver driverBody) {
+        try {
+            Driver driver = driverDAO.findById(id).orElse(null);
+            if(driver == null) {
+                return ResponseEntity.status(404).body("Driver não encontrado");
+            }
+            
+            Driver buscaEmail = driverDAO.findByEmailEquals(driverBody.getEmail());
+            if(buscaEmail != null && buscaEmail.getId() != driver.getId()) {
+                return ResponseEntity.status(400).body("Email já existente");
+            }               
+            if(driverBody.getEmail() != null) {
+                driver.setEmail(driverBody.getEmail());
+            }
+            
+
+            if(driverBody.getName() != null) {
+                driver.setName(driverBody.getName());
+            }
+            if(driverBody.getPassword() != null) {
+                driver.setPassword(driverBody.getPassword());
+            }
+            if(driverBody.getLatitude() != null) {
+                driver.setLatitude(driverBody.getLatitude());
+            }
+            if(driverBody.getLongitude() != null) {
+                driver.setLongitude(driverBody.getLongitude());
+            }
+            if(driverBody.getPhoneNumber() != null) {
+                driver.setPhoneNumber(driverBody.getPhoneNumber());
+            }
+
+            driverDAO.save(driver);
+
+            return ResponseEntity.status(200).body("Driver atualizado com sucesso");
+
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(500).body("Erro no servidor");
+        }
     }
 }

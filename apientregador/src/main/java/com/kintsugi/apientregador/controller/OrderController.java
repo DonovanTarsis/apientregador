@@ -29,9 +29,9 @@ public class OrderController {
 		return orderService.startOrderTracking(id, driverId);
 	}
 
- @GetMapping("/orders/{id}")
- public ResponseEntity<?> pegarOrderPeloId(@PathVariable("id") Integer id){
-	return orderService.pegarOrderPeloId(id);
- }
+	@GetMapping("/orders/{id}")
+	public ResponseEntity<?> pegarOrderPeloId(@PathVariable("id") Integer id){
+		return orderService.pegarOrderPeloId(id);
+	}
 
 }

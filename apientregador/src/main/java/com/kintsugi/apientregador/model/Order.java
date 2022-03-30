@@ -1,5 +1,7 @@
 package com.kintsugi.apientregador.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "orders")
@@ -27,22 +32,15 @@ public class Order {
 	private Integer status;
 
 	@ManyToOne
+	private Client client;
+
+	@ManyToOne
 	@JoinColumn(name = "driver_id")
 	private Driver driver;
 
-	// @ManyToOne
-	// @JoinColumn(name = "client_id")
-	// @JsonIgnoreProperties("ordersList")
-	// private Client client;
-
-	// @ManyToOne
-	// @JoinColumn(name = "driver_id")
-	// @JsonIgnoreProperties("ordersList")
-	// private Driver driver;
-
-	// @OneToMany(mappedBy = "order")
-	// @JsonIgnoreProperties("order")
-	// private List<Tracking> trackingList;
+	@OneToMany(mappedBy = "order")
+	@JsonIgnoreProperties("order")
+	private List<Tracking> trackingList;
 
 	public Integer getId() {
 		return id;
@@ -68,13 +66,21 @@ public class Order {
 		this.timestamp = timestamp;
 	}
 
-	// public Client getClient() {
-	// return client;
-	// }
+	public Integer getStatus() {
+		return status;
+	}
 
-	// public void setClient(Client client) {
-	// this.client = client;
-	// }
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	public Driver getDriver() {
 		return driver;
@@ -84,27 +90,12 @@ public class Order {
 		this.driver = driver;
 	}
 
-	// public List<Tracking> getTrackingList() {
-	// return trackingList;
-	// }
-
-	// public void setTrackingList(List<Tracking> trackingList) {
-	// this.trackingList = trackingList;
-	// }
-
-	public Integer getStatus() {
-		return status;
+	public List<Tracking> getTrackingList() {
+		return trackingList;
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setTrackingList(List<Tracking> trackingList) {
+		this.trackingList = trackingList;
 	}
-
-	// @Override
-	// public String toString() {
-	// return "Order [id=" + id + ", value=" + value + ", timestamp=" + timestamp +
-	// ", status=" + status + ", client="
-	// + client + ", driver=" + driver + ", trackingList=" + trackingList + "]";
-	// }
 
 }

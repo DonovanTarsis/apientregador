@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tracking")
@@ -24,10 +28,10 @@ public class Tracking {
 	@Column(nullable = false)
 	private Double longitude;
 
-	// @ManyToOne
-	// @JoinColumn(name="order_id")
-	// @JsonIgnoreProperties("trackingList")
-	// private Order order;
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	@JsonIgnoreProperties("trackingList")
+	private Order order;
 
 	public Integer getId() {
 		return id;
@@ -61,12 +65,12 @@ public class Tracking {
 		this.longitude = longitude;
 	}
 
-	// public Order getOrders() {
-	// return order;
-	// }
+	public Order getOrder() {
+		return order;
+	}
 
-	// public void setOrders(Order orders) {
-	// this.order = orders;
-	// }
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
 }

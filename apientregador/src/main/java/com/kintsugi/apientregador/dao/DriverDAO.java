@@ -1,7 +1,11 @@
 package com.kintsugi.apientregador.dao;
 
-import org.springframework.data.repository.CrudRepository;
+
 import com.kintsugi.apientregador.model.Driver;
-public interface DriverDAO extends CrudRepository <Driver, Integer> {
-    public Driver findByEmail(String email);
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DriverDAO extends JpaRepository<Driver, Integer> {
+
+    public Driver findByEmailEquals(String email);
 }

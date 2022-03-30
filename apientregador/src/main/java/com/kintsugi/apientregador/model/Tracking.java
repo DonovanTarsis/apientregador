@@ -12,59 +12,65 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="tracking")
+@Table(name = "tracking")
 public class Tracking {
 
 	@Id
-	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="timestamp", nullable = false)
+
+	@Column(nullable = false)
 	private String timestamp;
-	
-	@Column(name="latitude", nullable = false)
+
+	@Column(nullable = false)
 	private Double latitude;
-	
-	@Column(name="longitude", nullable = false)
+
+	@Column(nullable = false)
 	private Double longitude;
-	
+
 	@ManyToOne
-	@JoinColumn(name="order_id")
-	@JsonIgnoreProperties("trackingList")	
+	@JoinColumn(name = "order_id")
+	@JsonIgnoreProperties("trackingList")
 	private Order order;
 
-	
-	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTimestamp() {
 		return timestamp;
 	}
+
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
+
 	public Double getLatitude() {
 		return latitude;
 	}
+
 	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
+
 	public Double getLongitude() {
 		return longitude;
 	}
+
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
-	public Order getOrders() {
+
+	public Order getOrder() {
 		return order;
 	}
-	public void setOrders(Order orders) {
-		this.order = orders;
-	}	
-	
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
 }

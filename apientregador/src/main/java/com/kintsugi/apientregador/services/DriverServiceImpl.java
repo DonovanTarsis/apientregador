@@ -17,7 +17,7 @@ public class DriverServiceImpl implements IDriverService{
 
     @Override
     public Token gerarTokenDeDriverLogado(DriverLoginDTO dadosLogin) {
-        Driver driver = dao.findByEmail(dadosLogin.getEmail());
+        Driver driver = dao.findByEmailEquals(dadosLogin.getEmail());
         if(driver != null){
             boolean passwordIsValid = driver.getPassword().equals(dadosLogin.getPassword());
             

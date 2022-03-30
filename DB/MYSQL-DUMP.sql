@@ -16,7 +16,7 @@ CREATE TABLE driver(
 	name TEXT NOT NULL, 
 	phone_number CHAR(11) UNIQUE NOT NULL, 
     password TEXT NOT NULL,
-    email CHAR(50) NOT NULL,
+    email CHAR(50) UNIQUE NOT NULL,
     latitude DOUBLE,
     longitude DOUBLE
 );
@@ -26,7 +26,7 @@ CREATE TABLE orders(
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	value INTEGER NOT NULL, 
 	timestamp TEXT NOT NULL,
-    status TEXT NOT NULL,
+    status INTEGER NOT NULL,
     client_id INTEGER NOT NULL,
     driver_id INTEGER,
   	constraint fk_client foreign key (client_id) references client(id),

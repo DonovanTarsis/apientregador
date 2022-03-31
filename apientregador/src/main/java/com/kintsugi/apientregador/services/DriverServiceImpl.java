@@ -23,7 +23,7 @@ public class DriverServiceImpl implements IDriverService {
     public Token gerarTokenDeDriverLogado(DriverLoginDTO dadosLogin) {
         Driver driver = dao.findByEmailEquals(dadosLogin.getEmail());
         if (driver != null) {
-            boolean passwordIsValid = ApiCrypto.comparePassword(driver.getPassword(), dadosLogin.getPassword());
+            boolean passwordIsValid = ApiCrypto.comparePassword( dadosLogin.getPassword(), driver.getPassword());
 
             if (passwordIsValid) {
                 return new Token(TokenUtil.createToken(driver));
@@ -38,6 +38,7 @@ public class DriverServiceImpl implements IDriverService {
         Driver driverSave = dao.save(driver);
         DriverDTO driverReturn = new DriverDTO(driverSave.getId(), driverSave.getName(), driverSave.getEmail());
         return ResponseEntity.status(201).body(driverReturn);
+
     }
 
     public ResponseEntity<?> pegarDriverPeloId(Integer id) {

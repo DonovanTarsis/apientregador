@@ -21,7 +21,7 @@ public class TokenUtil {
     private static final int SEGUNDOS = 1000;
     private static final int MINUTOS = 60 * SEGUNDOS;
     private static final int HORAS = 60 * MINUTOS;
-    private static final int DIAS = 24 * HORAS;
+    // private static final int DIAS = 24 * HORAS;
 
     private static final String HEADER = "Authorization";
     private static final String PREFIX = "BEARER ";

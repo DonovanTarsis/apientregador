@@ -21,6 +21,7 @@ public class ApiTrackingSecurityConfiguration extends WebSecurityConfigurerAdapt
         .and()
         .authorizeRequests()
         .antMatchers(HttpMethod.POST, "/login").permitAll()
+        .antMatchers(HttpMethod.PUT, "/drivers/create").permitAll()
         .anyRequest().authenticated().and().cors();
 
         httpSec.addFilterBefore(new ApiFilter(), UsernamePasswordAuthenticationFilter.class);

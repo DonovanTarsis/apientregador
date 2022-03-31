@@ -1,4 +1,4 @@
-package com.kintsugi.apientregador.service;
+package com.kintsugi.apientregador.services;
 
 import java.util.List;
 

@@ -33,7 +33,7 @@ public class TokenUtil {
         Key secretKey = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
         String token = Jwts.builder()
-                .setSubject(driver.getEmail())
+                .setSubject(Integer.toString(driver.getId()))
                 .setIssuer(EMISSOR)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(secretKey, SignatureAlgorithm.HS256)
